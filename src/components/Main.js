@@ -39,6 +39,7 @@ export function Main(props) {
         <section className="places">
           {cards.map((card) => (
             <Card 
+            key={card._id}
             card={card}
             name={card.name}
             link={card.link}

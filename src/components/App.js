@@ -63,9 +63,9 @@ function App() {
     onClose={closeAllPopups}
     children={(
       <>
-        <input type="text" id="name-input" placeholder="Имя" name="travelerName" className="popup__input" required minlength="2" maxlength="40" />
+        <input type="text" id="name-input" placeholder="Имя" name="travelerName" className="popup__input" required minLength="2" maxLength="40" />
         <span className="name-input-error popup__input-error">ОЩИБКА</span>
-        <input type="text" id="job-input" placeholder="Вид деятельности" name="travelerJob" className="popup__input" required minlength="2" maxlength="200" />
+        <input type="text" id="job-input" placeholder="Вид деятельности" name="travelerJob" className="popup__input" required minLength="2" maxLength="200" />
         <span className="job-input-error popup__input-error">ОЩИБКА</span>
       </>
     )}
@@ -80,7 +80,7 @@ function App() {
     onClose={closeAllPopups}
     children={(
       <>
-        <input type="text" id="country-name-input" placeholder="Название" name="countryName" className="popup__input" required minlength="2" maxlength="30" />
+        <input type="text" id="country-name-input" placeholder="Название" name="countryName" className="popup__input" required minLength="2" maxLength="30" />
         <span className="country-name-input-error popup__input-error">ОЩИБКА</span>
         <input type="url" id="country-image-input" placeholder="Ссылка на картинку" name="countryImage" className="popup__input" required />
         <span className="country-image-input-error popup__input-error">ОЩИБКА</span>
