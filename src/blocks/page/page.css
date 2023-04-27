@@ -1,0 +1,6 @@
+.page {
+  background-color: rgba(0, 0, 0, 1);
+  min-width: 320px;
+  margin: 0 auto;
+  font-family: 'Inter', Arial, sans-serif;
+}
