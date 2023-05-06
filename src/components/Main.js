@@ -1,35 +1,21 @@
 import React from 'react';
 import editButton from '../images/eddit-button.png';
 import addButton from '../images/add-button.png';
-import api from '../utils/Api.js';
+
 import Card from './Card.js'
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 export function Main(props) {
-  const [userName, setUserName] = React.useState();
-  const [userDescription, setUserDescription] = React.useState();
-  const [userAvatar, setUserAvatar] = React.useState();
-  const [cards, getCards] = React.useState([]);
-  React.useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-    .then(([res1, res2]) => {
-      setUserName(res1.name);
-      setUserDescription(res1.about);
-      setUserAvatar(res1.avatar);
-      getCards(res2.reverse());
-    })
-    .catch((err) => {
-      console.log(err); 
-    }) 
-    }, [])
+  const currentUser = React.useContext(CurrentUserContext)
 
     return (
         <main className="content">
         <section className="profile">
           <div className="shell">
-           <button type="button" className="profile__button profile__edit-avatar-button" onClick={props.onEditAvatar}><img src={userAvatar} className="profile__avatar" alt="Аватарка" /></button>
+           <button type="button" className="profile__button profile__edit-avatar-button" onClick={props.onEditAvatar}><img src={currentUser.avatar} className="profile__avatar" alt="Аватарка" /></button>
            <div className="profile__info">
-             <h1 className="profile__name">{userName}</h1>
-             <p className="profile__profession">{userDescription}</p>
+             <h1 className="profile__name">{currentUser.name}</h1>
+             <p className="profile__profession">{currentUser.about}</p>
             </div>
             <button type="button" className="profile__button" onClick={props.onEditProfile}><img src={editButton} className="profile__edit-button" alt="Редактировать профиль" /></button>
           </div>
@@ -37,7 +23,7 @@ export function Main(props) {
         </section>
     
         <section className="places">
-          {cards.map((card) => (
+          {props.cards.map((card) => (
             <Card 
             key={card._id}
             card={card}
@@ -45,6 +31,8 @@ export function Main(props) {
             link={card.link}
             likes={card.likes.length}
             onCardClick={props.onCardClick}
+            onCardLike={props.onCardLike}
+            onCardDelete={props.onCardDelete}
             />
           ))}
         </section>

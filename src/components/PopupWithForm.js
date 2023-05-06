@@ -3,7 +3,7 @@ export function PopupWithForm(props) {
       <div className={`popup popup_open_${props.name} ${props.isOpen ? 'popup_opened' : ''}`}>
         <div className="popup__overlay" onClick={props.onClose}></div>
         <div className="popup__card">
-          <form name={props.name} method="post" className={`popup__form popup__form_for-${props.form}`} noValidate>
+          <form onSubmit={props.onSubmit} name={props.name} method="post" className={`popup__form popup__form_for-${props.form}`} noValidate>
             <h2 className="popup__header">{props.title}</h2>
             {props.children}
             <button type="submit" className="popup__button">{props.submitText}</button>

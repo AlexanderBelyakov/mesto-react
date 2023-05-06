@@ -32,8 +32,8 @@ export class Api {
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({
-          name: newUserInfo.userName,
-          about: newUserInfo.userAbout
+          name: newUserInfo.name,
+          about: newUserInfo.description
         })
       })
       .then(this._checkResponse);
@@ -56,7 +56,7 @@ export class Api {
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({
-          avatar: newAvatar.avatarImage
+          avatar: newAvatar.avatar
         })
       })
       .then(this._checkResponse);
@@ -84,6 +84,13 @@ export class Api {
         headers: this._headers
       })
       .then(this._checkResponse);
+    }
+
+    changeLikeCardStatus(cardId, isLiked) {
+      if(isLiked)
+      return this.removeLike(cardId)
+      else
+      return this.setLike(cardId)
     }
 }
 
